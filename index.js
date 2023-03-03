@@ -1,57 +1,47 @@
-const stopBtn = document.getElementById('stopButton');
-const slowBtn = document.getElementById('slowButton');
-const goBtn = document.getElementById('goButton');
-const stopLt = document.getElementById('stopLight');
-const slowLt = document.getElementById('slowLight');
-const goLt = document.getElementById('goLight');
-let enterEventCount = 0;
-let leaveEventCount = 0;
+const stopButton = document.getElementById('stopButton');
+const slowButton = document.getElementById('slowButton');
+const goButton = document.getElementById('goButton');
+const stopLight = document.getElementById('stopLight');
+const slowLight = document.getElementById('slowLight');
+const goLight = document.getElementById('goLight');
 
 
-stopBtn.addEventListener('click', () => {
-    if (stopLt.classList.contains('stop')) {
-        stopLt.classList.remove('stop');
+stopButton.addEventListener('click', () => {
+    stopLight.classList.toggle('stop');
+    if (stopLight.classList.contains('stop')) {
+        console.log(`${stopButton.innerText} bulb on`);
     } else {
-        stopLt.classList.add('stop');
+        console.log(`${stopButton.innerText} bulb off`);
     }
 })
 
-slowBtn.addEventListener('click', () => {
-    if (slowLt.classList.contains('slow')) {
-        slowLt.classList.remove('slow');
+slowButton.addEventListener('click', () => {
+    slowLight.classList.toggle('slow');
+    if (slowLight.classList.contains('slow')) {
+        console.log(`${slowButton.innerText} bulb on`);
     } else {
-        slowLt.classList.add('slow');
+        console.log(`${slowButton.innerText} bulb off`);
     }
 })
 
-goBtn.addEventListener('click', () => {
-    if (goLt.classList.contains('go')) {
-        goLt.classList.remove('go');
+goButton.addEventListener('click', () => {
+    goLight.classList.toggle('go');
+    if (goLight.classList.contains('go')) {
+        console.log(`${goButton.innerText} bulb on`);
     } else {
-        goLt.classList.add('go');
+        console.log(`${goButton.innerText} bulb off`);
     }
 })
 
-stopBtn.addEventListener('mouseenter', () => {
-    console.log(`Entered ${stopBtn.innerText} button`)
-})
+function mouseLog (element) {
+    element.addEventListener('mouseenter', () => {
+        console.log(`Entered ${element.innerText} button`)
+    });
+    element.addEventListener('mouseleave', () => {
+        console.log(`Left ${element.innerText} button`)
+    })
+}
 
-stopBtn.addEventListener('mouseleave', () => {
-    console.log(`Left ${stopBtn.innerText} button`)
-})
-
-slowBtn.addEventListener('mouseenter', () => {
-    console.log(`Entered ${slowBtn.innerText} button`)
-})
-
-slowBtn.addEventListener('mouseleave', () => {
-    console.log(`Left ${slowBtn.innerText} button`)
-})
-
-goBtn.addEventListener('mouseenter', () => {
-    console.log(`Entered ${goBtn.innerText} button`)
-})
-
-goBtn.addEventListener('mouseleave', () => {
-    console.log(`Left ${goBtn.innerText} button`)
-})
+mouseLog(goButton);
+mouseLog(slowButton);
+mouseLog(stopButton);
